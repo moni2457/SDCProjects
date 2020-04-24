@@ -1,0 +1,123 @@
+	
+	Overview
+----------------------------------------
+
+This programs reads the matrices of data from file and stores in the form of table/matrices(rows and columns).
+It has the ability to perform operation after then and view the results as per our expectations.
+The necessary changes and calculations are performed and the entire data table with the new
+changes would be written in file.
+
+A set of operations invoked on this data table.
+The operations are:
+ - Reading data from a file.
+
+Do any of the following, in any order, a number of times:-
+ - Create new columns for data.
+
+ - Set a column’s data values based on binary equation(involving 2 operands) or simple calculaions shown below.
+   The only binary operators that will be used are +, -, *, and /. 
+   More specifically, all equations will have one of the following forms: -
+
+   <columnName> = <value> <operator> <value> - <columnName> = <value> Where <columnName> is a column name, <value> is either an integer or a 
+   column name, and <operator> is one of + (addition), - (subtraction), * (multiplication), or / (division).
+ 
+ - Show the top 5 rows of data.
+
+ - Show all of the data.
+
+ - Write the data to a file.
+
+
+
+A detailed summary of the formatting requirements are in the csci 3901 course assignment #1 
+information in the course's brightspace space.
+
+Files and external data
+-----------------------
+
+There are two main files:
+  - DataChangeUI.java  -- main for the program that prompts the user for the file name
+  - DataTransformer.java -- class that makes the actual conversion of text
+
+Approach:
+---------
+
+--Started with file read using BufferReader.
+--Implemented and finalised the data Strucure to store the data.
+--Implemented print and top functionalities.
+--Added clear functionality
+--Worked on add new column.
+--Implemented the basic calculate functionalitiy by identifying the operator and operand
+--Proceeded withnthe basic functionalites of calculate.
+--Covered all the functionalities of calculate.
+--Validating all the TestCases
+--Running code on bluenose.
+
+
+Data structures and their relations to each other
+-------------------------------------------------
+
+The data structure used to store this table is ArrayList<ArrayList<String>>.
+
+ - Read Operation:
+The data is read line by line using BufferedReader read the file contents. 
+A different ArrayList is maintained to store the column names which is useful during evaluating the equations.
+Also, the ROWCOUNT variable is maintained which return the number of Rows in the data when this method is invoked.
+
+ - Print Operation:
+Iteration of the ArrayList which results in printing the entire data(All rows and columns).
+
+ - Top Operation:
+Iteration of the ArrayList which results in printing the top five rows from the data table.
+
+
+ - Add New Column Operation:
+Create a new column with the given name. The new column gets added in the ArrayList of column and in the data table ArrayList<ArrayList<String>>.
+Return True if a new column was created and is ready to be used. 
+
+ - Calculate Operation:
+The string  equation gets divided into operands and operator. Checking the equation is valid or not. 
+The operand is then compared with the ArrayList of column to get the index of the column. After that 
+all the column datas are fetched in two new arrays. This arrays get added to the ArrayL ArrayList ist and then the calculation is performed and stored in 
+a different ArrayList. The solution ArrayList gets added to the data table then.
+  -------- Cases---------
+With two operands and one operat or.
+With one constant, one operand, and one operator.
+With two constants and one operator.
+With only column name as one operand.
+With only constant as one operand.
+
+
+ - Clear Operation:
+Clear operation is used to clear all the data of table. Return true if object is empty.
+
+ - Write Operation:
+FileOutputStream and PrintWriter are used to write the table contents to the file.
+On invoking write operation all the new and old data are displayed in file.
+Return the number of data rows written to the file.
+
+
+
+Assumptions
+-----------
+ - The input file will have at most 10 columns. 
+ - File names will contain the full path to the file, including any file name extensions. 
+ - No line in the file is more than 80 characters.
+ - Column names will be a single alphabetic string.  They will not have any spaces or nonletter characters. 
+ - The user will not ask you to make a calculation that divides by 0. 
+ - String columns will only contain alphabetic characters. 
+ - Data in a column in a data file will always have the same data type (you won’t get a column where row 1 has an integer in the column and row 2 has an integer in the column).
+ - There will always be at least one space between each component of an equation.
+ - Every line in an input file will have the same number of columns of data.
+
+Choices
+-------
+
+  - The input file can have columns more than 10. User can read, add, print,  write any number of columns.
+
+
+Limitation
+----------
+ - Only +, -, *, / operations can be performed.
+ - Also calculation of only binary equations with only one operator.
+
